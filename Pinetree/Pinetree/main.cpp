@@ -9,8 +9,8 @@
  * Lesson 6: True Type Fonts with SDL_ttf
  */
 //Screen attributes
-const int SCREEN_WIDTH  = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH  = 2560;
+const int SCREEN_HEIGHT = 1440;
 
 /*
  * Log an SDL error with some error message to the output stream of our choice
@@ -32,6 +32,7 @@ void logSDLError(std::ostream &os, const std::string &msg){
 void renderTexture(SDL_Texture *tex, SDL_Renderer *ren, SDL_Rect dst, SDL_Rect *clip = nullptr){
    SDL_RenderCopy(ren, tex, clip, &dst);
 }
+
 /*
  * Draw an SDL_Texture to an SDL_Renderer at position x, y, preserving
  * the texture's width and height and taking a clip of the texture if desired
@@ -91,7 +92,12 @@ SDL_Texture* renderText(const std::string &message, const std::string &fontFile,
    TTF_CloseFont(font);
    return texture;
 }
-
+SDL_Texture* drawText(const std::string &message, const std::string &fontFile, SDL_Color color,
+              int fontSize, SDL_Renderer *renderer, int x, int y) {
+   SDL_Texture* t = renderText(message,getResourcePath("pinetree")+fontFile, color, 64, renderer);
+   renderTexture(t, renderer, x, y);
+   return t;
+}
 int main(int, char**){
    //Start up SDL and make sure it went ok
    if (SDL_Init(SDL_INIT_VIDEO) != 0){
@@ -106,7 +112,7 @@ int main(int, char**){
    }
    
    //Setup our window and renderer
-   SDL_Window *window = SDL_CreateWindow("Lesson 6", SDL_WINDOWPOS_CENTERED,
+   SDL_Window *window = SDL_CreateWindow("Pinetree", SDL_WINDOWPOS_CENTERED,
                                          SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
    if (window == nullptr){
       logSDLError(std::cout, "CreateWindow");
@@ -127,23 +133,27 @@ int main(int, char**){
    std::cout << resPath << std::endl;
    //We'll render the string "TTF fonts are cool!" in white
    //Color is in RGB format
-   SDL_Color color = { 255, 255, 255, 255 };
-   SDL_Texture *image = renderText("Pinetree", resPath+"Tuffy.ttf", color, 64, renderer);
-   if (image == nullptr){
-      cleanup(image, renderer, window);
-      TTF_Quit();
-      SDL_Quit();
-      return 1;
-   }
+//   if (image == nullptr){
+//      cleanup(image, renderer, window);
+//      TTF_Quit();
+//      SDL_Quit();
+//      return 1;
+//   }
    
    //Get the texture w/h so we can center it in the screen
-   int iW, iH;
-   SDL_QueryTexture(image, NULL, NULL, &iW, &iH);
-   int x = SCREEN_WIDTH / 2 - iW / 2;
-   int y = SCREEN_HEIGHT / 2 - iH / 2;
+
+   
    
    SDL_Event e;
    bool quit = false;
+   
+   SDL_Color color = {255,255,255,255};
+   SDL_Texture* t = renderText("Pinetree",getResourcePath("pinetree")+"Tuffy.ttf", color, 64, renderer);
+   int iW, iH;
+   SDL_QueryTexture(t, NULL, NULL, &iW, &iH);
+   int x = SCREEN_WIDTH / 2 - iW / 2;
+   int y = SCREEN_HEIGHT / 2 - iH / 2;
+   
    while (!quit){
       //Event Polling
       while (SDL_PollEvent(&e)){
@@ -153,17 +163,23 @@ int main(int, char**){
          if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE){
             quit = true;
          }
+         if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RIGHT) {
+            ++x;
+         }
       }
       SDL_RenderClear(renderer);
+      
       //We can draw our message as we do any other texture, since it's been
       //rendered to a texture
-      renderTexture(image, renderer, x, y);
+      
+      renderTexture(t, renderer, x, y);
+
       SDL_RenderPresent(renderer);
    }
    //Clean up
-   cleanup(image, renderer, window);
-   TTF_Quit();
-   SDL_Quit();
+//   cleanup(image, renderer, window);
+//   TTF_Quit();
+//   SDL_Quit();
    
    return 0;
 }

@@ -7,31 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0BBFBF3C1AF9445C00786AE1 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBFBF3B1AF9445C00786AE1 /* SDL2_ttf.framework */; };
-		0BBFBF3E1AF9446700786AE1 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBFBF3D1AF9446700786AE1 /* SDL2.framework */; };
 		0BBFBF421AF9473100786AE1 /* TwinklebearDev-Lessons-LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 0BBFBF411AF9473100786AE1 /* TwinklebearDev-Lessons-LICENSE.md */; };
+		0BBFBF451AF9498D00786AE1 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBFBF431AF9498D00786AE1 /* SDL2_ttf.framework */; };
+		0BBFBF461AF9498D00786AE1 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBFBF441AF9498D00786AE1 /* SDL2.framework */; };
+		0BBFBF4B1AF949C800786AE1 /* res in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BBFBF4A1AF949C600786AE1 /* res */; };
 		0BC9E3691AF93367005AFE34 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0BC9E3681AF93367005AFE34 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0BC9E3631AF93367005AFE34 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				0BBFBF4B1AF949C800786AE1 /* res in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0BBFBF391AF9444A00786AE1 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = ../../../../../Library/Frameworks/SDL.framework; sourceTree = "<group>"; };
-		0BBFBF3B1AF9445C00786AE1 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
-		0BBFBF3D1AF9446700786AE1 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		0BBFBF3F1AF945DE00786AE1 /* res_path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = res_path.h; sourceTree = "<group>"; };
 		0BBFBF401AF9461000786AE1 /* cleanup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cleanup.h; sourceTree = "<group>"; };
 		0BBFBF411AF9473100786AE1 /* TwinklebearDev-Lessons-LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "TwinklebearDev-Lessons-LICENSE.md"; sourceTree = "<group>"; };
+		0BBFBF431AF9498D00786AE1 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
+		0BBFBF441AF9498D00786AE1 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		0BBFBF4A1AF949C600786AE1 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		0BC9E3651AF93367005AFE34 /* Pinetree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pinetree; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BC9E3681AF93367005AFE34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,8 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BBFBF3C1AF9445C00786AE1 /* SDL2_ttf.framework in Frameworks */,
-				0BBFBF3E1AF9446700786AE1 /* SDL2.framework in Frameworks */,
+				0BBFBF451AF9498D00786AE1 /* SDL2_ttf.framework in Frameworks */,
+				0BBFBF461AF9498D00786AE1 /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,10 +54,10 @@
 		0BC9E35C1AF93367005AFE34 = {
 			isa = PBXGroup;
 			children = (
+				0BBFBF4A1AF949C600786AE1 /* res */,
+				0BBFBF431AF9498D00786AE1 /* SDL2_ttf.framework */,
+				0BBFBF441AF9498D00786AE1 /* SDL2.framework */,
 				0BBFBF411AF9473100786AE1 /* TwinklebearDev-Lessons-LICENSE.md */,
-				0BBFBF3D1AF9446700786AE1 /* SDL2.framework */,
-				0BBFBF3B1AF9445C00786AE1 /* SDL2_ttf.framework */,
-				0BBFBF391AF9444A00786AE1 /* SDL.framework */,
 				0BC9E3671AF93367005AFE34 /* Pinetree */,
 				0BC9E3661AF93367005AFE34 /* Products */,
 			);
