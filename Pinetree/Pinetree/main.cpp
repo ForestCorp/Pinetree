@@ -176,6 +176,7 @@ int main(int, char**){
               --x;
           }
       }
+      SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
       SDL_RenderClear(renderer);
       
       //We can draw our message as we do any other texture, since it's been
@@ -185,7 +186,11 @@ int main(int, char**){
        
        SDL_Texture* t2=renderText("(C)ForestCorp", getResourcePath("pinetree")+"Tuffy.ttf", {255,255,255,255}, 40, renderer);
        renderTexture(t2, renderer, x-10, y+65);
-       
+      
+      SDL_Rect rectToDraw = {100,100,222,222};
+      SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+      SDL_RenderFillRect(renderer, &rectToDraw);
+      
       SDL_RenderPresent(renderer);
 
    }
