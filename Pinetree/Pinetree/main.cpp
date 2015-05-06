@@ -166,6 +166,15 @@ int main(int, char**){
          if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RIGHT) {
             ++x;
          }
+        if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_DOWN) {
+              ++y;
+          }
+        if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_UP) {
+              --y;
+        }
+          if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_LEFT) {
+              --x;
+          }
       }
       SDL_RenderClear(renderer);
       
