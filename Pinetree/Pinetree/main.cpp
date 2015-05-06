@@ -173,8 +173,12 @@ int main(int, char**){
       //rendered to a texture
       
       renderTexture(t, renderer, x, y);
-
+       
+       SDL_Texture* t2=renderText("(C)ForestCorp", getResourcePath("pinetree")+"Tuffy.ttf", {255,255,255,255}, 40, renderer);
+       renderTexture(t2, renderer, x-10, y+65);
+       
       SDL_RenderPresent(renderer);
+
    }
    //Clean up
 //   cleanup(image, renderer, window);
