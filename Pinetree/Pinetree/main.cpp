@@ -278,7 +278,7 @@ int main(int, char**){
       SDL_RenderFillRect(renderer, &listButtonRect); /* Draw the rect */
       renderTexture(listButtonText, renderer, 100,100); /* Render the text's texture */
       
-    //Shutdownbutton
+      //Shutdown button
       SDL_Rect shutdownButtonRect = {100,200,400,100}; /* Define button rectangle */
       SDL_Texture* shutdownButtonText = renderText("Shutdown", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer); /* Define button text */
       int shutdownButtonOn=bIndex-1; /* Calculate if the button should be on */
