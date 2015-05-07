@@ -239,15 +239,17 @@ int main(int, char**){
          case 1:
                   quit=true;
                   break;
-         
          case 2:
                     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
-                                             "You clicked Settings",
+                                             "You clicked settings",
                                              "NOT IMPLEMENTED YET",
                                              NULL);
                     break;
          }
       }
+      }
+   }
+   
       double now = SDL_GetTicks();
       //deltatime is in seconds
       if (now > last) {
@@ -287,20 +289,16 @@ int main(int, char**){
       renderTexture(shutdownButtonText, renderer, 100,200); /* Render the text's texture */
        
        //List button
-       SDL_Rect SettingsButtonRect = {100,300,400,100}; /* Define button rectangle */
-       SDL_Texture* SettingsButtonText = renderText("List", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer); /* Define button text */
-       int SettingsButtonOn=bIndex-0; /* Calculate if the button should be on */
-       SDL_SetRenderDrawColor(renderer, 255*(bIndex-2)*SettingsButtonOn/* Calculate again */, 255, 255, 255); /* Set rectangle color */
-       SDL_RenderFillRect(renderer, &SettingsButtonRect); /* Draw the rect */
-       renderTexture(SettingsButtonText, renderer, 100,300); /* Render the text's texture */
+       SDL_Rect settingsButtonRect = {100,300,400,100}; /* Define button rectangle */
+       SDL_Texture* settingsButtonText = renderText("List", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer); /* Define button text */
+       int settingsButtonOn=bIndex-0; /* Calculate if the button should be on */
+       SDL_SetRenderDrawColor(renderer, 255*(bIndex-2)*settingsButtonOn/* Calculate again */, 255, 255, 255); /* Set rectangle color */
+       SDL_RenderFillRect(renderer, &settingsButtonRect); /* Draw the rect */
+       renderTexture(settingsButtonText, renderer, 100,300); /* Render the text's texture */
       
       
       
       SDL_RenderPresent(renderer);
-      
-      
-
-   }
    //Clean up
 //   cleanup(image, renderer, window);
 //   TTF_Quit();
