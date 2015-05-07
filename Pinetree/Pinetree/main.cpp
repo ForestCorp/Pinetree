@@ -93,7 +93,7 @@ SDL_Texture* renderText(const std::string &message, const std::string &fontFile,
    return texture;
 }
 SDL_Texture* drawText(const std::string &message, const std::string &fontFile, SDL_Color color,
-              int fontSize, SDL_Renderer *renderer, int x, int y) {
+                      int fontSize, SDL_Renderer *renderer, int x, int y) {
    SDL_Texture* t = renderText(message,getResourcePath("pinetree")+fontFile, color, 64, renderer);
    renderTexture(t, renderer, x, y);
    return t;
@@ -157,15 +157,15 @@ int main(int, char**){
    std::cout << resPath << std::endl;
    //We'll render the string "TTF fonts are cool!" in white
    //Color is in RGB format
-//   if (image == nullptr){
-//      cleanup(image, renderer, window);
-//      TTF_Quit();
-//      SDL_Quit();
-//      return 1;
-//   }
+   //   if (image == nullptr){
+   //      cleanup(image, renderer, window);
+   //      TTF_Quit();
+   //      SDL_Quit();
+   //      return 1;
+   //   }
    
    //Get the texture w/h so we can center it in the screen
-
+   
    
    
    SDL_Event e;
@@ -181,7 +181,7 @@ int main(int, char**){
    double last = 0;
    float deltaTime = 0.0;
    
-  
+   
    unsigned int bIndex = 0;
    
    SDL_Surface *image = SDL_LoadBMP("bg.bmp");
@@ -207,26 +207,26 @@ int main(int, char**){
          if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RIGHT) {
             
          }
-        if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_DOWN) {
-           if (bIndex!=1) {
-              ++bIndex;
-           }
-           else {
-              bIndex=0;
-           }
-           
-          }
-        if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_UP) {
-           if (bIndex!=0) {
-              --bIndex;
-           }
-           else {
-              bIndex=0;
-           }
-          }
-          if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_LEFT) {
-             
-          }
+         if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_DOWN) {
+            if (bIndex!=1) {
+               ++bIndex;
+            }
+            else {
+               bIndex=0;
+            }
+            
+         }
+         if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_UP) {
+            if (bIndex!=0) {
+               --bIndex;
+            }
+            else {
+               bIndex=0;
+            }
+         }
+         if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_LEFT) {
+            
+         }
          if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RETURN) {
             switch(bIndex) {
                case 0:
@@ -235,21 +235,14 @@ int main(int, char**){
                                            "NOT IMPLEMENTED YET",
                                            NULL);
                   break;
-            
-         case 1:
+                  
+               case 1:
                   quit=true;
                   break;
-         case 2:
-                    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
-                                             "You clicked settings",
-                                             "NOT IMPLEMENTED YET",
-                                             NULL);
-                    break;
+            }
+            
          }
       }
-      }
-   }
-   
       double now = SDL_GetTicks();
       //deltatime is in seconds
       if (now > last) {
@@ -268,9 +261,9 @@ int main(int, char**){
       
       
       renderTexture(t, renderer, x, y);
-       
+      
       SDL_Texture* t2=renderText("(C)ForestCorp"+std::to_string(bIndex), getResourcePath("pinetree")+"Tuffy.ttf", {255,255,255,255}, 40, renderer);
-       renderTexture(t2, renderer, x-10, y+65);
+      renderTexture(t2, renderer, x-10, y+65);
       
       //List button
       SDL_Rect listButtonRect = {100,100,400,100}; /* Define button rectangle */
@@ -287,22 +280,18 @@ int main(int, char**){
       SDL_SetRenderDrawColor(renderer, 255*(bIndex-1)*shutdownButtonOn/* Calculate again */, 255, 255, 255); /* Set rectangle color */
       SDL_RenderFillRect(renderer, &shutdownButtonRect); /* Draw the rect */
       renderTexture(shutdownButtonText, renderer, 100,200); /* Render the text's texture */
-       
-       //List button
-       SDL_Rect settingsButtonRect = {100,300,400,100}; /* Define button rectangle */
-       SDL_Texture* settingsButtonText = renderText("List", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer); /* Define button text */
-       int settingsButtonOn=bIndex-0; /* Calculate if the button should be on */
-       SDL_SetRenderDrawColor(renderer, 255*(bIndex-2)*settingsButtonOn/* Calculate again */, 255, 255, 255); /* Set rectangle color */
-       SDL_RenderFillRect(renderer, &settingsButtonRect); /* Draw the rect */
-       renderTexture(settingsButtonText, renderer, 100,300); /* Render the text's texture */
       
       
       
       SDL_RenderPresent(renderer);
+      
+      
+      
+   }
    //Clean up
-//   cleanup(image, renderer, window);
-//   TTF_Quit();
-//   SDL_Quit();
+   //   cleanup(image, renderer, window);
+   //   TTF_Quit();
+   //   SDL_Quit();
    
    return 0;
-   }
+}
