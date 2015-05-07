@@ -208,7 +208,7 @@ int main(int, char**){
             
          }
          if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_DOWN) {
-            if (bIndex!=1) {
+            if (bIndex!=2) {
                ++bIndex;
             }
             else {
@@ -239,6 +239,13 @@ int main(int, char**){
                case 1:
                   quit=true;
                   break;
+                case 2:
+                    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
+                                             "You clicked settings",
+                                             "NOT IMPLEMENTED YET",
+                                             NULL);
+                
+                break;
             }
             
          }
@@ -281,7 +288,15 @@ int main(int, char**){
       SDL_RenderFillRect(renderer, &shutdownButtonRect); /* Draw the rect */
       renderTexture(shutdownButtonText, renderer, 100,200); /* Render the text's texture */
       
-      
+    
+       //Settings Button
+       SDL_Rect settingsButtonRect = {100,300,400,100}; /* Define button rectangle */
+      SDL_Texture* settingsButtonText = renderText("Settings", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer); /* Define button text */
+       int settingsButtonOn=bIndex-2; /* Calculate if the button should be on */
+       SDL_SetRenderDrawColor(renderer, 255*(bIndex-2)*settingsButtonOn/* Calculate again */, 255, 255, 255); /* Set rectangle color */
+       SDL_RenderFillRect(renderer, &settingsButtonRect); /* Draw the rect */
+       renderTexture(settingsButtonText, renderer, 100,300); /* Render the text's texture */
+
       
       SDL_RenderPresent(renderer);
       
