@@ -265,19 +265,20 @@ int main(int, char**){
       SDL_Texture* t2=renderText("(C)ForestCorp"+std::to_string(bIndex), getResourcePath("pinetree")+"Tuffy.ttf", {255,255,255,255}, 40, renderer);
        renderTexture(t2, renderer, x-10, y+65);
       
-      SDL_Rect listButtonRect = {100,100,400,100};
-      SDL_Texture* listButtonText = renderText("List", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer);
-      int listButtonOn=bIndex-0;
-      SDL_SetRenderDrawColor(renderer, 255*(bIndex-0)*listButtonOn, 255, 255, 255);
-      SDL_RenderFillRect(renderer, &listButtonRect);
-      renderTexture(listButtonText, renderer, 100,100);
+      //List button
+      SDL_Rect listButtonRect = {100,100,400,100}; /* Define button rectangle */
+      SDL_Texture* listButtonText = renderText("List", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer); /* Define button text */
+      int listButtonOn=bIndex-0; /* Calculate if the button should be on */
+      SDL_SetRenderDrawColor(renderer, 255*(bIndex-0)*listButtonOn/* Calculate again */, 255, 255, 255); /* Set rectangle color */
+      SDL_RenderFillRect(renderer, &listButtonRect); /* Draw the rect */
+      renderTexture(listButtonText, renderer, 100,100); /* Render the text's texture */
       
-      SDL_Rect shutdownButtonRect = {100,200,400,100};
-      SDL_Texture* shutdownButtonText = renderText("Shutdown", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer);
-      int shutdownButtonOn=bIndex-1;
-      SDL_SetRenderDrawColor(renderer, 255*(bIndex-1)*shutdownButtonOn, 255, 255, 255);
-      SDL_RenderFillRect(renderer, &shutdownButtonRect);
-      renderTexture(shutdownButtonText, renderer, 100,200);
+      SDL_Rect shutdownButtonRect = {100,200,400,100}; /* Define button rectangle */
+      SDL_Texture* shutdownButtonText = renderText("Shutdown", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer); /* Define button text */
+      int shutdownButtonOn=bIndex-1; /* Calculate if the button should be on */
+      SDL_SetRenderDrawColor(renderer, 255*(bIndex-1)*shutdownButtonOn/* Calculate again */, 255, 255, 255); /* Set rectangle color */
+      SDL_RenderFillRect(renderer, &shutdownButtonRect); /* Draw the rect */
+      renderTexture(shutdownButtonText, renderer, 100,200); /* Render the text's texture */
       
       
       
