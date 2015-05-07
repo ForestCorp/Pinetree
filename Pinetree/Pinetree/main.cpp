@@ -98,6 +98,29 @@ SDL_Texture* drawText(const std::string &message, const std::string &fontFile, S
    renderTexture(t, renderer, x, y);
    return t;
 }
+
+auto timePrev = std::chrono::high_resolution_clock::now();
+
+// Returns time since last time this function was called in seconds with nanosecond precision
+double GetDelta()
+{
+   // Gett current time as a std::chrono::time_point
+   // which basically contains info about the current point in time
+   auto timeCurrent = std::chrono::high_resolution_clock::now();
+   
+   // Compare the two to create time_point containing delta time in nanosecnds
+   auto timeDiff = std::chrono::duration_cast< std::chrono::nanoseconds >( timeCurrent - timePrev );
+   
+   // Get the tics as a variable
+   double delta = timeDiff.count();
+   
+   // Turn nanoseconds into seconds
+   delta /= 1000000000;
+   
+   timePrev = timeCurrent;
+   return delta;
+}
+
 int main(int, char**){
    //Start up SDL and make sure it went ok
    if (SDL_Init(SDL_INIT_VIDEO) != 0){
@@ -114,6 +137,7 @@ int main(int, char**){
    //Setup our window and renderer
    SDL_Window *window = SDL_CreateWindow("Pinetree", SDL_WINDOWPOS_CENTERED,
                                          SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+   SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
    if (window == nullptr){
       logSDLError(std::cout, "CreateWindow");
       TTF_Quit();
@@ -154,9 +178,26 @@ int main(int, char**){
    int x = SCREEN_WIDTH / 2 - iW / 2;
    int y = SCREEN_HEIGHT / 2 - iH / 2;
    
+   double last = 0;
+   float deltaTime = 0.0;
+   
+  
+   unsigned int bIndex = 0;
+   
+   SDL_Surface *image = SDL_LoadBMP("bg.bmp");
+   if (image == NULL)
+      SDL_ShowSimpleMessageBox(0, "Image init error", SDL_GetError(),
+                               window);
+   SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer,
+                                                        image);
+   if (texture == NULL)
+      SDL_ShowSimpleMessageBox(0, "Texture init error",
+                               SDL_GetError(), window);
+   
    while (!quit){
       //Event Polling
       while (SDL_PollEvent(&e)){
+         
          if (e.type == SDL_QUIT){
             quit = true;
          }
@@ -164,34 +205,85 @@ int main(int, char**){
             quit = true;
          }
          if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RIGHT) {
-            ++x;
+            
          }
         if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_DOWN) {
-              ++y;
+           if (bIndex!=1) {
+              ++bIndex;
+           }
+           else {
+              bIndex=0;
+           }
+           
           }
         if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_UP) {
-              --y;
-        }
-          if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_LEFT) {
-              --x;
+           if (bIndex!=0) {
+              --bIndex;
+           }
+           else {
+              bIndex=0;
+           }
           }
+          if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_LEFT) {
+             
+          }
+         if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_RETURN) {
+            switch(bIndex) {
+               case 0:
+                  SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
+                                           "You clicked list",
+                                           "NOT IMPLEMENTED YET",
+                                           NULL);
+                  break;
+            
+         case 1:
+                  quit=true;
+                  break;
+         }
+         
+         }
       }
-      SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+      double now = SDL_GetTicks();
+      //deltatime is in seconds
+      if (now > last) {
+         deltaTime = ((float)(now - last)) / 1000;
+         last = now;
+      }
+      
+      SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
       SDL_RenderClear(renderer);
+      
+      
+      renderTexture(texture, renderer, 0,0);
       
       //We can draw our message as we do any other texture, since it's been
       //rendered to a texture
       
+      
       renderTexture(t, renderer, x, y);
        
-       SDL_Texture* t2=renderText("(C)ForestCorp", getResourcePath("pinetree")+"Tuffy.ttf", {255,255,255,255}, 40, renderer);
+      SDL_Texture* t2=renderText("(C)ForestCorp"+std::to_string(bIndex), getResourcePath("pinetree")+"Tuffy.ttf", {255,255,255,255}, 40, renderer);
        renderTexture(t2, renderer, x-10, y+65);
       
-      SDL_Rect rectToDraw = {100,100,222,222};
-      SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-      SDL_RenderFillRect(renderer, &rectToDraw);
+      SDL_Rect listButtonRect = {100,100,400,100};
+      SDL_Texture* listButtonText = renderText("List", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer);
+      int listButtonOn=bIndex-0;
+      SDL_SetRenderDrawColor(renderer, 255*(bIndex-0)*listButtonOn, 255, 255, 255);
+      SDL_RenderFillRect(renderer, &listButtonRect);
+      renderTexture(listButtonText, renderer, 100,100);
+      
+      SDL_Rect shutdownButtonRect = {100,200,400,100};
+      SDL_Texture* shutdownButtonText = renderText("Shutdown", getResourcePath("pinetree")+"Tuffy.ttf", {0,0,0,255}, 100, renderer);
+      int shutdownButtonOn=bIndex-1;
+      SDL_SetRenderDrawColor(renderer, 255*(bIndex-1)*shutdownButtonOn, 255, 255, 255);
+      SDL_RenderFillRect(renderer, &shutdownButtonRect);
+      renderTexture(shutdownButtonText, renderer, 100,200);
+      
+      
       
       SDL_RenderPresent(renderer);
+      
+      
 
    }
    //Clean up
