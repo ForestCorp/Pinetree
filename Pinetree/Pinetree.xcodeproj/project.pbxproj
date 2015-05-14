@@ -30,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		0B1DEBC61AFA7B38002E6AD6 /* bg.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = bg.bmp; sourceTree = "<group>"; };
+		0B90B78F1B04A78C00E894DB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0BBFBF3F1AF945DE00786AE1 /* res_path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = res_path.h; sourceTree = "<group>"; };
 		0BBFBF401AF9461000786AE1 /* cleanup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cleanup.h; sourceTree = "<group>"; };
 		0BBFBF411AF9473100786AE1 /* TwinklebearDev-Lessons-LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "TwinklebearDev-Lessons-LICENSE.md"; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		0BC9E35C1AF93367005AFE34 = {
 			isa = PBXGroup;
 			children = (
+				0B90B78F1B04A78C00E894DB /* .gitignore */,
 				0BBFBF4A1AF949C600786AE1 /* res */,
 				0BBFBF431AF9498D00786AE1 /* SDL2_ttf.framework */,
 				0BBFBF441AF9498D00786AE1 /* SDL2.framework */,
