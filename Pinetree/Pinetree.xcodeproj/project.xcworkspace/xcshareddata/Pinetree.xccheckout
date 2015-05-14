@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>5DEDD175-1297-4D40-8296-B5E6CC7EAC02</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Pinetree</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A4BC355B34593F3B4B3149928327C2F8641580C5</key>
 		<string>https://github.com/ForestCorp/Pinetree.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Pinetree/Pinetree.xcodeproj/project.xcworkspace</string>
+	<string>Pinetree/Pinetree.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A4BC355B34593F3B4B3149928327C2F8641580C5</key>

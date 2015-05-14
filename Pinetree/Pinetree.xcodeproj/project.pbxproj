@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B1DEBC71AFA7B71002E6AD6 /* bg.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B1DEBC61AFA7B38002E6AD6 /* bg.bmp */; };
-		0BBFBF421AF9473100786AE1 /* TwinklebearDev-Lessons-LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 0BBFBF411AF9473100786AE1 /* TwinklebearDev-Lessons-LICENSE.md */; };
 		0BBFBF451AF9498D00786AE1 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBFBF431AF9498D00786AE1 /* SDL2_ttf.framework */; };
 		0BBFBF461AF9498D00786AE1 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBFBF441AF9498D00786AE1 /* SDL2.framework */; };
 		0BBFBF4B1AF949C800786AE1 /* res in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BBFBF4A1AF949C600786AE1 /* res */; };
@@ -39,6 +38,9 @@
 		0BBFBF4A1AF949C600786AE1 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		0BC9E3651AF93367005AFE34 /* Pinetree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Pinetree; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BC9E3681AF93367005AFE34 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0BD26B3E1AFCEBD000C8F719 /* Settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Settings.cpp; sourceTree = "<group>"; };
+		0BD26B3F1AFCEBD000C8F719 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		0BD26B411AFCF6D500C8F719 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,9 @@
 			isa = PBXGroup;
 			children = (
 				0BC9E3681AF93367005AFE34 /* main.cpp */,
+				0BD26B411AFCF6D500C8F719 /* main.h */,
+				0BD26B3E1AFCEBD000C8F719 /* Settings.cpp */,
+				0BD26B3F1AFCEBD000C8F719 /* Settings.h */,
 				0B1DEBC61AFA7B38002E6AD6 /* bg.bmp */,
 				0BBFBF401AF9461000786AE1 /* cleanup.h */,
 				0BBFBF3F1AF945DE00786AE1 /* res_path.h */,
@@ -141,7 +146,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BC9E3691AF93367005AFE34 /* main.cpp in Sources */,
-				0BBFBF421AF9473100786AE1 /* TwinklebearDev-Lessons-LICENSE.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
